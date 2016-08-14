@@ -1,0 +1,14 @@
+.container {
+  width: auto;
+  text-align: center;
+}
+
+.item-types {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.banner {
+  color: #008800;
+}
