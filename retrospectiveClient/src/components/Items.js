@@ -7,37 +7,29 @@ export default class Items extends Component {
 
         this.itemList = this.itemList.bind(this);
         this.addItem = this.addItem.bind(this);
+        this.updateContent = this.updateContent.bind(this);
 
-        //dummy data for testing
-        this.items = [
-            {content: "thing 1"},
-            {content: "thing 2"},
-            {content: "thing 3"}
-        ]
-    }
-
-    componentDidMount() {
-        this.setState({
+        this.state = {
             items: []
-        })
+        };
     }
 
     itemList(items) {
-        return items.map((item) => {
-            return <li>{item.content}</li>
+        return items.map((item, index) => {
+            return <li key={index}>{item.content}</li>
         })
     }
 
     addItem(event) {
-        const itemsArray = this.state.items;
+      event.preventDefault()
+      const itemsArray = this.state.items.concat([{content: this.state.content, id: Date.now()}])
+      this.setState({
+        items: itemsArray
+      })
+    }
 
-        itemsArray.push({
-            content: event.target.value
-        });
-
-        this.setState({
-            items: itemsArray
-        })
+    updateContent(event) {
+      this.setState({ content: event.target.value})
     }
 
     render() {
@@ -45,11 +37,14 @@ export default class Items extends Component {
         return (
             <div>
                 <div>{logo}</div>
-                {this.itemList(this.items)}
+                {this.itemList(this.state.items)}
                 <div>
                     <form onSubmit={this.addItem}>
                         <input type="text"
-                               placeholder={`Add your ${listType} item`}/>
+                               placeholder={`Add your ${listType} item`}
+                               defaultValue="example"
+                               onChange={this.updateContent}
+                        />
                         <button type="submit">Add</button>
                     </form>
                 </div>

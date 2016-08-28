@@ -13,12 +13,7 @@ class App extends Component {
           <div className="item-types">
             <Items
                 logo="HAPPY"
-            />
-            <Items
-              logo="HAPPY"
-            />
-            <Items
-              logo="HAPPY"
+                listType="happy"
             />
           </div>
         </div>
