@@ -11,7 +11,7 @@ export default class Items extends Component {
 
         this.state = {
             items: []
-        };
+        }
     }
 
     itemList(items) {
@@ -20,16 +20,17 @@ export default class Items extends Component {
         })
     }
 
-    addItem(event) {
-      event.preventDefault()
+    addItem(e) {
+      e.preventDefault()
       const itemsArray = this.state.items.concat([{content: this.state.content, id: Date.now()}])
+
       this.setState({
         items: itemsArray
       })
     }
 
-    updateContent(event) {
-      this.setState({ content: event.target.value})
+    updateContent(e) {
+      this.setState({ content: e.target.value})
     }
 
     render() {
@@ -42,7 +43,6 @@ export default class Items extends Component {
                     <form onSubmit={this.addItem}>
                         <input type="text"
                                placeholder={`Add your ${listType} item`}
-                               defaultValue="example"
                                onChange={this.updateContent}
                         />
                         <button type="submit">Add</button>
