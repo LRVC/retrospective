@@ -34,11 +34,13 @@ export default class Items extends Component {
     }
 
     render() {
-        const { logo, listType } = this.props;
+        const { header, listType } = this.props;
         return (
             <div>
-                <div>{logo}</div>
-                {this.itemList(this.state.items)}
+                <div className="item-header">{header}</div>
+                <ul>
+                  {this.itemList(this.state.items)}
+                </ul>
                 <div>
                     <form onSubmit={this.addItem}>
                         <input type="text"

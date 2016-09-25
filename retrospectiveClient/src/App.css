@@ -3,3 +3,19 @@
   color: #47e4fb;
   font-size: 4rem;
 }
+
+.item-types {
+  display: flex;
+  flex-direction: row;
+}
+
+.item {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+button {
+  position: relative;
+  top: 2rem;
+  right: 5rem;
+}
